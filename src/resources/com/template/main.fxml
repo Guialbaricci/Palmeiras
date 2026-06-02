@@ -8,34 +8,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
    <children>
-      <Pane prefHeight="539.0" prefWidth="776.0">
+      <Pane prefHeight="539.0" prefWidth="776.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-border-width: 5;">
          <children>
-            <Button fx:id="btnSalvar" layoutX="449.0" layoutY="467.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" text="Salvar" />
+            <Button fx:id="btnSalvar" layoutX="449.0" layoutY="467.0" mnemonicParsing="false" onAction="#btnSalvarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Salvar" />
             <Label fx:id="lblID" layoutX="64.0" layoutY="35.0" text="ID" />
-            <Button fx:id="btnAdicionar" layoutX="638.0" layoutY="467.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" text="Adicionar" />
-            <Button fx:id="btnAlterar" layoutX="36.0" layoutY="467.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" text="Alterar" />
-            <Button fx:id="btnExcluir" layoutX="249.0" layoutY="467.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" text="Excluir" />
-            <TextField fx:id="txtId" layoutX="112.0" layoutY="31.0" />
+            <Button fx:id="btnAdicionar" layoutX="63.0" layoutY="468.0" mnemonicParsing="false" onAction="#btnAdicionarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Adicionar" />
+            <Button fx:id="btnAtualizar" layoutX="261.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnAtualizarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Atualizar" />
+            <Button fx:id="btnExcluir" layoutX="611.0" layoutY="467.0" mnemonicParsing="false" onAction="#btnExcluirAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Excluir" />
+            <TextField fx:id="txtId" layoutX="112.0" layoutY="31.0" style="-fx-border-color: black;" />
             <TableView fx:id="tblJogadores" layoutX="36.0" layoutY="182.0" prefHeight="252.0" prefWidth="714.0">
               <columns>
-                <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="colNome" prefWidth="234.0" text="Nome" />
-                  <TableColumn fx:id="colIdade" minWidth="0.0" prefWidth="118.0" text="Idade" />
-                  <TableColumn fx:id="colNacionalidade" prefWidth="184.0" text="Nacionalidade" />
-                  <TableColumn fx:id="colGols" prefWidth="102.0" text="Gols" />
+                <TableColumn fx:id="colId" prefWidth="75.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="ID" />
+                <TableColumn fx:id="colNome" prefWidth="234.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Nome" />
+                  <TableColumn fx:id="colIdade" minWidth="0.0" prefWidth="118.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Idade" />
+                  <TableColumn fx:id="colNacionalidade" prefWidth="184.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Nacionalidade" />
+                  <TableColumn fx:id="colGols" prefWidth="102.0" style="-fx-background-color: lightblue; -fx-border-color: black;" text="Gols" />
               </columns>
             </TableView>
             <Label fx:id="lblNome" layoutX="288.0" layoutY="35.0" text="Nome" />
-            <TextField fx:id="txtNome" layoutX="334.0" layoutY="31.0" />
+            <TextField fx:id="txtNome" layoutX="334.0" layoutY="31.0" style="-fx-border-color: black;" />
             <Label fx:id="lblNacionalidade" layoutX="25.0" layoutY="102.0" text="Nacionalidade" />
-            <TextField fx:id="txtNacionalidade" layoutX="112.0" layoutY="98.0" />
+            <TextField fx:id="txtNacionalidade" layoutX="112.0" layoutY="98.0" style="-fx-border-color: black;" />
             <Label fx:id="lblGols" layoutX="293.0" layoutY="102.0" text="Gols" />
-            <TextField fx:id="txtGols" layoutX="334.0" layoutY="98.0" />
+            <TextField fx:id="txtGols" layoutX="334.0" layoutY="98.0" style="-fx-border-color: black;" />
             <Label fx:id="lblIdade" layoutX="553.0" layoutY="37.0" text="Idade" />
-            <TextField fx:id="txtIdade" layoutX="590.0" layoutY="32.0" />
+            <TextField fx:id="txtIdade" layoutX="590.0" layoutY="32.0" style="-fx-border-color: black;" />
          </children>
       </Pane>
    </children>
