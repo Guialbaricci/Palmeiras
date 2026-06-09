@@ -4,19 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class MainController {
 
     @FXML private Button btnAdicionar;
-    @FXML private Button btnAlterar;
+    @FXML private Button btnPesquisar;
     @FXML private Button btnExcluir;
+    @FXML private Button btnAtualizar;
 
     @FXML private TextField txtId;
     @FXML private TextField txtNome;
@@ -43,8 +42,22 @@ public class MainController {
         colNacionalidade.setCellValueFactory(new PropertyValueFactory<>("nacionalidade"));
         colGols.setCellValueFactory(new PropertyValueFactory<>("gols"));
 
+        tblJogadores.setColumnResizePolicy(
+                TableView.CONSTRAINED_RESIZE_POLICY
+        );
         selecionarJogadores();
 
+        txtIdade.textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtIdade.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        txtGols.textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtGols.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
 
         tblJogadores.getSelectionModel()
                 .selectedItemProperty()
@@ -110,27 +123,48 @@ public class MainController {
 
     @FXML
     private void btnExcluirAction(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alert.setTitle("Confirmação");
+        alert.setHeaderText("Deseja realmente excluir este jogador?");
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+
             int id = Integer.parseInt(txtId.getText());
+
             JogadoresDAO dao = new JogadoresDAO();
             dao.excluirJogador(id);
+
             selecionarJogadores();
             limparCampos();
+        }
     }
 
     @FXML
-    private void btnSalvarAction(ActionEvent event) {
-        JogadoresDTO jogador = new JogadoresDTO();
+    private void btnPesquisarAction(ActionEvent event) {
+        if (txtId.getText().isEmpty()) {
+            selecionarJogadores();
+            return;
+        }
 
-        jogador.setNome(txtNome.getText());
-        jogador.setIdade(Integer.parseInt(txtIdade.getText()));
-        jogador.setNacionalidade(txtNacionalidade.getText());
-        jogador.setGols(Integer.parseInt(txtGols.getText()));
+        int idPesquisa = Integer.parseInt(txtId.getText());
 
         JogadoresDAO dao = new JogadoresDAO();
-        dao.cadastrarJogador(jogador);
+        ArrayList<JogadoresDTO> lista = dao.selecionarJogadores();
 
-        selecionarJogadores();
-        limparCampos();
+        ObservableList<JogadoresDTO> resultado =
+                FXCollections.observableArrayList();
+
+        for (JogadoresDTO jogador : lista) {
+            if (jogador.getId() == idPesquisa) {
+                resultado.add(jogador);
+            }
+        }
+        tblJogadores.setItems(resultado);
+
+        if (resultado.isEmpty()) {
+            limparCampos();
+        }
     }
 
     private void selecionarJogadores() {

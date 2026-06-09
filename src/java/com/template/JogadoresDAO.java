@@ -20,8 +20,6 @@ public class JogadoresDAO {
             ps.setInt(4, jogador.getGols());
 
             ps.executeUpdate();
-
-            System.out.println("Jogador cadastrado com sucesso!");
         }
         catch (SQLException e) {
             throw new RuntimeException("Erro ao cadastrar jogador", e);
@@ -68,8 +66,6 @@ public class JogadoresDAO {
             ps.setInt(5, jogador.getId());
 
             ps.executeUpdate();
-
-            System.out.println("Jogador atualizado com sucesso!");
         }
         catch (SQLException e) {
             throw new RuntimeException("Erro ao atualizar jogador", e);
@@ -85,8 +81,6 @@ public class JogadoresDAO {
             ps.setInt(1, id);
 
             ps.executeUpdate();
-
-            System.out.println("Jogador removido com sucesso!");
         }
         catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir jogador", e);
