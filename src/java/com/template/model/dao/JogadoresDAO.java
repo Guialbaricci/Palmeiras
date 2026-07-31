@@ -1,4 +1,7 @@
-package com.template;
+package com.template.model.dao;
+
+import com.template.model.dto.JogadoresDTO;
+import com.template.model.ConexaoBD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

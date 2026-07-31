@@ -9,39 +9,40 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="533.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
-   <children>
-      <Pane prefHeight="531.0" prefWidth="795.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button fx:id="btnPesquisar" layoutX="650.0" layoutY="465.0" mnemonicParsing="false" onAction="#btnPesquisarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: limegreen; -fx-border-color: black;" text="Pesquisar" />
-            <Label fx:id="lblID" layoutX="60.0" layoutY="95.0" text="ID" />
-            <Button fx:id="btnAdicionar" layoutX="650.0" layoutY="255.0" mnemonicParsing="false" onAction="#btnAdicionarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: turquoise; -fx-border-color: black;" text="Adicionar" />
-            <Button fx:id="btnAtualizar" layoutX="650.0" layoutY="395.0" mnemonicParsing="false" onAction="#btnAtualizarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: goldenrod; -fx-border-color: black;" text="Atualizar" />
-            <Button fx:id="btnExcluir" layoutX="650.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnExcluirAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: tomato; -fx-border-color: black;" text="Excluir" />
-            <TextField fx:id="txtId" layoutX="105.0" layoutY="90.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite o id do jogador" style="-fx-border-color: black;" />
-            <TableView fx:id="tblJogadores" fixedCellSize="0.0" layoutX="20.0" layoutY="206.0" onMouseClicked="#carregarCampos" prefHeight="308.0" prefWidth="611.0" style="-fx-selection-bar: #34495e; -fx-selection-bar-text: white;">
-              <columns>
-                <TableColumn fx:id="colId" prefWidth="75.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="ID" />
-                <TableColumn fx:id="colNome" prefWidth="185.81182098388672" style="-fx-background-color: transparent; -fx-border-color: black;" text="Nome" />
-                  <TableColumn fx:id="colNacionalidade" prefWidth="139.88812255859375" style="-fx-background-color: transparent; -fx-border-color: black;" text="Nacionalidade" />
-                  <TableColumn fx:id="colIdade" minWidth="0.0" prefWidth="113.3695068359375" style="-fx-background-color: transparent; -fx-border-color: black;" text="Idade" />
-                  <TableColumn fx:id="colGols" prefWidth="93.73895263671875" style="-fx-background-color: transparent; -fx-border-color: black;" text="Gols" />
-              </columns>
-            </TableView>
-            <Label fx:id="lblNome" layoutX="285.0" layoutY="95.0" text="Nome" />
-            <TextField fx:id="txtNome" layoutX="330.0" layoutY="90.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite o nome do jogador" style="-fx-border-color: black;" />
-            <Label fx:id="lblNacionalidade" layoutX="20.0" layoutY="160.0" text="Nacionalidade" />
-            <TextField fx:id="txtNacionalidade" layoutX="105.0" layoutY="155.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite a nacionalidade" style="-fx-border-color: black;" />
-            <Label fx:id="lblGols" layoutX="540.0" layoutY="130.0" text="Gols" />
-            <TextField fx:id="txtGols" layoutX="575.0" layoutY="125.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite a quantidade de gols" style="-fx-border-color: black;" />
-            <Label fx:id="lblIdade" layoutX="290.0" layoutY="160.0" text="Idade" />
-            <TextField fx:id="txtIdade" layoutX="330.0" layoutY="155.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite a idade do jogador" style="-fx-border-color: black;" />
-            <Label layoutX="235.0" layoutY="17.0" prefHeight="44.0" prefWidth="365.0" text="⚽JogadoresPalmeiras⚽">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </children>
+<AnchorPane prefHeight="533.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.controller.MainController">
+    <children>
+        <Pane prefHeight="531.0" prefWidth="795.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="btnPesquisar" layoutX="650.0" layoutY="465.0" mnemonicParsing="false" onAction="#btnPesquisarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: limegreen; -fx-border-color: black;" text="Pesquisar" />
+                <Label fx:id="lblID" layoutX="60.0" layoutY="95.0" text="ID" />
+                <Button fx:id="btnAdicionar" layoutX="650.0" layoutY="255.0" mnemonicParsing="false" onAction="#btnAdicionarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: turquoise; -fx-border-color: black;" text="Adicionar" />
+                <Button fx:id="btnAtualizar" layoutX="650.0" layoutY="395.0" mnemonicParsing="false" onAction="#btnAtualizarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: goldenrod; -fx-border-color: black;" text="Atualizar" />
+                <Button fx:id="btnExcluir" layoutX="650.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnExcluirAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: tomato; -fx-border-color: black;" text="Excluir" />
+                <TextField fx:id="txtId" layoutX="105.0" layoutY="90.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite o id do jogador" style="-fx-border-color: black;" />
+                <TableView fx:id="tblJogadores" fixedCellSize="0.0" layoutX="20.0" layoutY="206.0" prefHeight="308.0" prefWidth="611.0" style="-fx-selection-bar: #34495e; -fx-selection-bar-text: white;">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="75.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="ID" />
+                        <TableColumn fx:id="colNome" prefWidth="185.81182098388672" style="-fx-background-color: transparent; -fx-border-color: black;" text="Nome" />
+                        <TableColumn fx:id="colNacionalidade" prefWidth="139.88812255859375" style="-fx-background-color: transparent; -fx-border-color: black;" text="Nacionalidade" />
+                        <TableColumn fx:id="colIdade" minWidth="0.0" prefWidth="113.3695068359375" style="-fx-background-color: transparent; -fx-border-color: black;" text="Idade" />
+                        <TableColumn fx:id="colGols" prefWidth="93.73895263671875" style="-fx-background-color: transparent; -fx-border-color: black;" text="Gols" />
+                    </columns>
+                </TableView>
+                <Label fx:id="lblNome" layoutX="285.0" layoutY="95.0" text="Nome" />
+                <TextField fx:id="txtNome" layoutX="330.0" layoutY="90.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite o nome do jogador" style="-fx-border-color: black;" />
+                <Label fx:id="lblNacionalidade" layoutX="20.0" layoutY="160.0" text="Nacionalidade" />
+                <TextField fx:id="txtNacionalidade" layoutX="105.0" layoutY="155.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite a nacionalidade" style="-fx-border-color: black;" />
+                <Label fx:id="lblGols" layoutX="540.0" layoutY="95.0" text="Gols" />
+                <TextField fx:id="txtGols" layoutX="575.0" layoutY="90.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite a quantidade de gols" style="-fx-border-color: black;" />
+                <Label fx:id="lblIdade" layoutX="290.0" layoutY="160.0" text="Idade" />
+                <TextField fx:id="txtIdade" layoutX="330.0" layoutY="155.0" prefHeight="28.0" prefWidth="165.0" promptText="Digite a idade do jogador" style="-fx-border-color: black;" />
+                <Label layoutX="235.0" layoutY="17.0" prefHeight="44.0" prefWidth="365.0" text="⚽JogadoresPalmeiras⚽">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnLimpar" layoutX="595.0" layoutY="150.0" mnemonicParsing="false" onAction="#btnLimparAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: lightpink; -fx-border-color: black;" text="Limpar Campos" />
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>
