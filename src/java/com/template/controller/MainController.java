@@ -3,6 +3,7 @@ package com.template.controller;
 import com.template.model.dao.JogadoresDAO;
 import com.template.model.dto.JogadoresDTO;
 import com.template.util.DialogUtil;
+import com.template.validator.JogadoresValidator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -71,8 +72,7 @@ public class MainController {
 
     @FXML
     private void btnAdicionarAction(ActionEvent event) {
-        if (!validarCamposSemId()) {
-            DialogUtil.mostrarErro("Erro de Validação", "Preencha todos os campos obrigatórios (Nome, Idade, Nacionalidade, Gols).");
+        if (!JogadoresValidator.validarJogador(txtNome.getText().trim(), txtIdade.getText().trim(), txtNacionalidade.getText().trim(), txtGols.getText().trim())) {
             return;
         }
 
@@ -96,8 +96,8 @@ public class MainController {
 
     @FXML
     private void btnAtualizarAction(ActionEvent event) {
-        if (txtId.getText().isEmpty() || !validarCamposSemId()) {
-            DialogUtil.mostrarErro("Erro de Validação", "Selecione um jogador na tabela ou preencha o ID e os demais campos.");
+        if (!JogadoresValidator.validarPorID(txtId.getText().trim()) ||
+                !JogadoresValidator.validarJogador(txtNome.getText().trim(), txtIdade.getText().trim(), txtNacionalidade.getText().trim(), txtGols.getText().trim())) {
             return;
         }
 
@@ -122,8 +122,7 @@ public class MainController {
 
     @FXML
     private void btnExcluirAction(ActionEvent event) {
-        if (txtId.getText().isEmpty()) {
-            DialogUtil.mostrarErro("Erro de Validação", "Selecione um jogador na tabela para excluir.");
+        if (!JogadoresValidator.validarPorID(txtId.getText().trim())) {
             return;
         }
 
@@ -146,8 +145,7 @@ public class MainController {
 
     @FXML
     private void btnPesquisarAction(ActionEvent event) {
-        if (txtId.getText().trim().isEmpty()) {
-            selecionarJogadores();
+        if (!JogadoresValidator.validarPorID(txtId.getText().trim())) {
             return;
         }
 
@@ -194,12 +192,5 @@ public class MainController {
         txtNacionalidade.clear();
         txtGols.clear();
         tblJogadores.getSelectionModel().clearSelection();
-    }
-
-    private boolean validarCamposSemId() {
-        return !txtNome.getText().trim().isEmpty()
-                && !txtIdade.getText().trim().isEmpty()
-                && !txtNacionalidade.getText().trim().isEmpty()
-                && !txtGols.getText().trim().isEmpty();
     }
 }
