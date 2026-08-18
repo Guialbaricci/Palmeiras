@@ -54,7 +54,8 @@ public class MainController {
             jogadoresService.cadastrar(txtNome.getText(), txtIdade.getText(), txtNacionalidade.getText(), txtGols.getText());
             DialogUtil.mostrarMensagem("Sucesso", "Jogador cadastrado com sucesso!");
             resetarTela();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             DialogUtil.mostrarErro("Erro ao Cadastrar", "Falha ao cadastrar: " + e.getMessage());
         }
     }
@@ -70,7 +71,8 @@ public class MainController {
             jogadoresService.atualizar(txtId.getText(), txtNome.getText(), txtIdade.getText(), txtNacionalidade.getText(), txtGols.getText());
             DialogUtil.mostrarMensagem("Sucesso", "Jogador atualizado com sucesso!");
             resetarTela();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             DialogUtil.mostrarErro("Erro ao Atualizar", "Falha ao atualizar: " + e.getMessage());
         }
     }
@@ -86,7 +88,8 @@ public class MainController {
                 jogadoresService.excluir(txtId.getText());
                 DialogUtil.mostrarMensagem("Sucesso", "Jogador excluído com sucesso!");
                 resetarTela();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 DialogUtil.mostrarErro("Erro ao Excluir", "Falha ao excluir: " + e.getMessage());
             }
         }
@@ -108,7 +111,8 @@ public class MainController {
                 DialogUtil.mostrarMensagem("Aviso", "Nenhum jogador encontrado com o ID fornecido.");
                 limparFormulario();
             }
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e) {
             DialogUtil.mostrarErro("Erro de Entrada", "Informe um ID numérico válido.");
         }
     }

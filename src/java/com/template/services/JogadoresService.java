@@ -27,21 +27,21 @@ public class JogadoresService{
     }
 
     public void cadastrar(String nome, String idade, String nacionalidade, String gols) {
-        JogadoresDTO jogador = montarDTO(null, nome, idade, nacionalidade, gols);
+        JogadoresDTO jogador = JogadorDTO(null, nome, idade, nacionalidade, gols);
         jogadoresDAO.cadastrarJogador(jogador);
     }
 
     public void atualizar(String id, String nome, String idade, String nacionalidade, String gols) {
-        JogadoresDTO jogador = montarDTO(id, nome, idade, nacionalidade, gols);
+        JogadoresDTO jogador = JogadorDTO(id, nome, idade, nacionalidade, gols);
         jogadoresDAO.atualizarJogador(jogador);
     }
 
     public void excluir(String id) {
-        int id1 = Integer.parseInt(id.trim());
-        jogadoresDAO.excluirJogador(id1);
+        int idExcluir = Integer.parseInt(id.trim());
+        jogadoresDAO.excluirJogador(idExcluir);
     }
 
-    private JogadoresDTO montarDTO(String id, String nome, String idade, String nacionalidade, String gols) {
+    private JogadoresDTO JogadorDTO(String id, String nome, String idade, String nacionalidade, String gols) {
         JogadoresDTO jogador = new JogadoresDTO();
         if (id != null && !id.isBlank()) {
             jogador.setId(Integer.parseInt(id.trim()));
