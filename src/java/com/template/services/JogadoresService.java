@@ -1,0 +1,55 @@
+package com.template.services;
+
+import com.template.model.dao.JogadoresDAO;
+import com.template.model.dto.JogadoresDTO;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class JogadoresService{
+
+    private final JogadoresDAO jogadoresDAO;
+
+    public JogadoresService() {
+        this.jogadoresDAO = new JogadoresDAO();
+    }
+
+    public List<JogadoresDTO> listarTodos() {
+        return jogadoresDAO.selecionarJogadores();
+    }
+
+    public List<JogadoresDTO> buscarPorId(int id) {
+        ArrayList<JogadoresDTO> todos = jogadoresDAO.selecionarJogadores();
+        return todos.stream()
+                .filter(j -> j.getId() == id)
+                .collect(Collectors.toList());
+    }
+
+    public void cadastrar(String nome, String idadeStr, String nacionalidade, String golsStr) {
+        JogadoresDTO jogador = montarDTO(null, nome, idadeStr, nacionalidade, golsStr);
+        jogadoresDAO.cadastrarJogador(jogador);
+    }
+
+    public void atualizar(String idStr, String nome, String idadeStr, String nacionalidade, String golsStr) {
+        JogadoresDTO jogador = montarDTO(idStr, nome, idadeStr, nacionalidade, golsStr);
+        jogadoresDAO.atualizarJogador(jogador);
+    }
+
+    public void excluir(String idStr) {
+        int id = Integer.parseInt(idStr.trim());
+        jogadoresDAO.excluirJogador(id);
+    }
+
+    private JogadoresDTO montarDTO(String idStr, String nome, String idadeStr, String nacionalidade, String golsStr) {
+        JogadoresDTO jogador = new JogadoresDTO();
+        if (idStr != null && !idStr.isBlank()) {
+            jogador.setId(Integer.parseInt(idStr.trim()));
+        }
+        jogador.setNome(nome.trim());
+        jogador.setIdade(Integer.parseInt(idadeStr.trim()));
+        jogador.setNacionalidade(nacionalidade.trim());
+        jogador.setGols(Integer.parseInt(golsStr.trim()));
+        return jogador;
+    }
+}
