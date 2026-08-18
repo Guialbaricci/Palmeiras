@@ -26,30 +26,30 @@ public class JogadoresService{
                 .collect(Collectors.toList());
     }
 
-    public void cadastrar(String nome, String idadeStr, String nacionalidade, String golsStr) {
-        JogadoresDTO jogador = montarDTO(null, nome, idadeStr, nacionalidade, golsStr);
+    public void cadastrar(String nome, String idade, String nacionalidade, String gols) {
+        JogadoresDTO jogador = montarDTO(null, nome, idade, nacionalidade, gols);
         jogadoresDAO.cadastrarJogador(jogador);
     }
 
-    public void atualizar(String idStr, String nome, String idadeStr, String nacionalidade, String golsStr) {
-        JogadoresDTO jogador = montarDTO(idStr, nome, idadeStr, nacionalidade, golsStr);
+    public void atualizar(String id, String nome, String idade, String nacionalidade, String gols) {
+        JogadoresDTO jogador = montarDTO(id, nome, idade, nacionalidade, gols);
         jogadoresDAO.atualizarJogador(jogador);
     }
 
-    public void excluir(String idStr) {
-        int id = Integer.parseInt(idStr.trim());
-        jogadoresDAO.excluirJogador(id);
+    public void excluir(String id) {
+        int id1 = Integer.parseInt(id.trim());
+        jogadoresDAO.excluirJogador(id1);
     }
 
-    private JogadoresDTO montarDTO(String idStr, String nome, String idadeStr, String nacionalidade, String golsStr) {
+    private JogadoresDTO montarDTO(String id, String nome, String idade, String nacionalidade, String gols) {
         JogadoresDTO jogador = new JogadoresDTO();
-        if (idStr != null && !idStr.isBlank()) {
-            jogador.setId(Integer.parseInt(idStr.trim()));
+        if (id != null && !id.isBlank()) {
+            jogador.setId(Integer.parseInt(id.trim()));
         }
         jogador.setNome(nome.trim());
-        jogador.setIdade(Integer.parseInt(idadeStr.trim()));
+        jogador.setIdade(Integer.parseInt(idade.trim()));
         jogador.setNacionalidade(nacionalidade.trim());
-        jogador.setGols(Integer.parseInt(golsStr.trim()));
+        jogador.setGols(Integer.parseInt(gols.trim()));
         return jogador;
     }
 }
