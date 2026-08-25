@@ -16,7 +16,7 @@ public class NumeroValidator implements Validator<String> {
         }
         try {
             int num = Integer.parseInt(this.valor.trim());
-            return num >= 0; // Garante que não seja um número negativo
+            return num >= 0;
         } catch (NumberFormatException e) {
             return false;
         }

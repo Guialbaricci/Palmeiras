@@ -40,8 +40,4 @@ public class JogadoresValidator {
         }
         return true;
     }
-
-    public static boolean estaVazio(String texto) {
-        return texto == null || texto.trim().isEmpty();
-    }
 }
