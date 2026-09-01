@@ -4,6 +4,7 @@ import com.template.model.dto.JogadoresDTO;
 import com.template.services.JogadoresService;
 import com.template.util.DialogUtil;
 import com.template.util.TextFieldUtil;
+import com.template.validator.IJogadoresValidator;
 import com.template.validator.JogadoresValidator;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -14,6 +15,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.List;
 
 public class MainController {
+    private final IJogadoresValidator jogadorValidator;
+    public MainController(IJogadoresValidator jogadorValidator) {
+        this.jogadorValidator = jogadorValidator;
+    }
 
     @FXML private Button btnAdicionar;
     @FXML private Button btnPesquisar;
@@ -46,7 +51,7 @@ public class MainController {
 
     @FXML
     private void btnAdicionarAction(ActionEvent event) {
-        if (!JogadoresValidator.validarJogador(txtNome.getText(), txtIdade.getText(), txtNacionalidade.getText(), txtGols.getText())) {
+        if (!jogadorValidator.validarJogador(txtNome.getText(), txtIdade.getText(), txtNacionalidade.getText(), txtGols.getText())) {
             return;
         }
 
@@ -63,7 +68,7 @@ public class MainController {
     @FXML
     private void btnAtualizarAction(ActionEvent event) {
         if (!JogadoresValidator.validarPorID(txtId.getText()) ||
-                !JogadoresValidator.validarJogador(txtNome.getText(), txtIdade.getText(), txtNacionalidade.getText(), txtGols.getText())) {
+                !jogadorValidator.validarJogador(txtNome.getText(), txtIdade.getText(), txtNacionalidade.getText(), txtGols.getText())) {
             return;
         }
 

@@ -3,9 +3,8 @@ package com.template.validator;
 import com.template.util.DialogUtil;
 import java.util.List;
 
-public class JogadoresValidator {
-
-    public static boolean validarJogador(String nome, String idade, String nacionalidade, String gols) {
+public class JogadoresValidator implements IJogadoresValidator{
+    public boolean validarJogador(String nome, String idade, String nacionalidade, String gols) {
         List<Validator<String>> validadores = List.of(
                 new CampoObrigatorioValidator("Nome", nome),
                 new TamanhoTextoValidator("Nome", nome, 2, 50),

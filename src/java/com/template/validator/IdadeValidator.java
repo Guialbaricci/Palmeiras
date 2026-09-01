@@ -6,7 +6,7 @@ public class IdadeValidator implements Validator<String> {
     private final int idadeMaxima;
 
     public IdadeValidator(String valor) {
-        this(valor, 10, 60);
+        this(valor, 14, 60);
     }
 
     public IdadeValidator(String valor, int idadeMinima, int idadeMaxima) {
